@@ -1,0 +1,236 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 2. v2.0 | 20110126
+  License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*
+  ========================================
+  Grid
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+/*======================================*/
+.style{
+   
+        text-align: center;
+     
+}
+
+.clear{
+  clear: both;
+   }
+.circle{
+  margin: 0 auto;
+ 
+  width: 700px;
+  height: 500px;
+  background-color: rgb(29, 26, 25);
+}
+.top-left-circle{
+  height:100px;
+  width: 100px;
+  background:#5286ad;
+  border-top-left-radius: 100%;
+  margin-left:34%;
+  margin-top:100px;
+ float:left ;
+
+  
+
+}
+.top-right-circle{
+height: 100px;
+width:  100px;
+
+  background-color: rgba(213, 37, 19, 0.3);
+  border-top-right-radius:100%;
+  margin-right: 30%;
+  margin-top:100px;
+  float:left ;
+
+
+
+}
+.bottom-left-circle{
+  height: 100px;
+  width: 100px;
+  background-color:rgba(10, 239, 50, 0.3);
+  border-bottom-left-radius: 100%;
+  margin-left:34%;
+  margin-bottom: 50px;
+ 
+  float:left ;
+ 
+
+  
+
+}
+.bottom-right-circle{
+  height: 100px;
+  width: 100px;
+  background-color: rgba(230, 237, 21, 0.3);
+  border-bottom-right-radius: 100%;
+  float:left ;
+  margin-right: 30%;
+  margin-bottom: 50px;
+
+
+}
+
+h1{
+    font-size: 80px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+h2{
+  color: rgba(247, 247, 247, 0.856);
+ 
+}
+.btn {
+  border-radius: 5px;
+
+  margin-left: 34%;
+  border: 1px solid #dfe2e5;
+  padding:10px 30px;
+  display: inline-block;
+}
+.btn-alt {
+  
+
+  float: right;
+   }
+   .btn-bottom{
+    margin-left: 38%;
+   }
