@@ -174,7 +174,7 @@ table {
 height: 100px;
 width:  100px;
 
-  background-color: rgba(213, 37, 19, 0.3);
+  background-color: #ac5359;
   border-top-right-radius:100%;
   margin-right: 30%;
   margin-top:100px;
@@ -186,7 +186,7 @@ width:  100px;
 .bottom-left-circle{
   height: 100px;
   width: 100px;
-  background-color:rgba(10, 239, 50, 0.3);
+  background-color:#59a67f;
   border-bottom-left-radius: 100%;
   margin-left:34%;
   margin-bottom: 50px;
@@ -200,7 +200,7 @@ width:  100px;
 .bottom-right-circle{
   height: 100px;
   width: 100px;
-  background-color: rgba(230, 237, 21, 0.3);
+  background-color: #c4c639;
   border-bottom-right-radius: 100%;
   float:left ;
   margin-right: 30%;
@@ -216,21 +216,28 @@ h1{
 }
 h2{
   color: rgba(247, 247, 247, 0.856);
+ text-align:center;
+ 
+}
+h3{
+  color: rgba(247, 247, 247, 0.856);
+ text-align:center;
+ height: 18px;
  
 }
 .btn {
   border-radius: 5px;
-
-  margin-left: 34%;
   border: 1px solid #dfe2e5;
-  padding:10px 30px;
-  display: inline-block;
+  padding:10px 10px;
+ 
 }
 .btn-alt {
-  
+  cursor: pointer;
 
   float: right;
    }
    .btn-bottom{
     margin-left: 38%;
+    margin-right:38% ;
+
    }
