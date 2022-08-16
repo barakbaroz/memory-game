@@ -35,7 +35,7 @@ let game_st= {
   let t_r= document.querySelector(".top-right-circle")
   let b_l= document.querySelector(".bottom-left-circle")
   let b_r= document.querySelector(".bottom-right-circle") 
-  let pidback= document.querySelector("h3")
+  let feedback= document.querySelector("h3")
       function toggleColor(a,b)
        {
           return new Promise((resolve,reject)=>{ 
@@ -45,179 +45,68 @@ let game_st= {
             setTimeout(()=>{
              b.style.background=a.Initial_color   
           resolve(game_st)
-           },1700 )
-          
+           },1700 )   
           })
-    
-      }
-      
-      t_l.addEventListener('click',()=>{ 
-        if (game_st.control_player&& game_st.Color_order.length>game_st.Color_order_player.length)
-        {
-          game_st.control_player=false
-        t_l.style.background =top_left_c.highlight_color
-        game_st.Color_order_player.push(top_left_c.value)
-        setTimeout(()=>{
-          game_st.control_player=true
-          t_l.style.background =top_left_c.Initial_color
-          console.log(game_st)
-          if (game_st.Color_order.length==game_st.Color_order_player.length)
-          { 
-            console.log (check_result())
-           if( check_result())
-            { 
-             if (game_st.Color_order.length==1)
-             {
-              pidback.innerHTML='הדסה  ברעוז'
-              round_two()
-              .then(()=>{
-                game_st.control_player=true
-               }
-               )
-             }
-            else if(game_st.Color_order.length<6)
-            {
-              pidback.innerHTML='הדסה אלופה'
-            round_three() 
-            }
-            else  pidback.innerHTML='הדסה ענקיתתת'
-            }
-            else
-            pidback.innerHTML='נכשלת '
-        }
-        },500)
-        }
+      } 
+     t_l.addEventListener('click',()=>{ 
+      click_player(t_l,top_left_c)
       })
-      
      t_r.addEventListener('click',()=>{ 
-      if (game_st.control_player&& game_st.Color_order.length>game_st.Color_order_player.length)
-      {
-      t_r.style.background =top_right_c.highlight_color
-      game_st.Color_order_player.push(top_right_c.value)
-      game_st.control_player=false
-      setTimeout(()=>{
-        game_st.control_player=true
-        t_r.style.background =top_right_c.Initial_color
-        console.log(game_st)
-        if (game_st.Color_order.length==game_st.Color_order_player.length)
-        { 
-          console.log (check_result())
-         if( check_result())
-          { 
-           if (game_st.Color_order.length==1)
-           {
-              pidback.innerHTML='הדסה  ברעוז'
-              round_two()
-              .then(()=>{
-                game_st.control_player=true
-               }
-               )
-      
-           }
-          else if(game_st.Color_order.length<6)
-          {
-            pidback.innerHTML='הדסה אלופה'
-            round_three() 
-          }
-          else  pidback.innerHTML='הדסה ענקיתתת'
-          }
-          else
-          pidback.innerHTML='נכשלת '
-      }
-      },500)
-      }
+      click_player(t_r,top_right_c)
+     })
+     b_l.addEventListener('click',()=>{ 
+      click_player(b_l,bottom_left_c)
+     })
+     b_r.addEventListener('click',()=>{ 
+      click_player(b_r,bottom_right_c)
     })
-    
-   
-   b_l.addEventListener('click',()=>{ 
-    if (game_st.control_player&& game_st.Color_order.length>game_st.Color_order_player.length)
+  function click_player(element,side_c)
+  {
+    if (control_player())
     {
-      game_st.Color_order_player.push(bottom_left_c.value)
+      game_st.Color_order_player.push(side_c.value)
       game_st.control_player=false
-      b_l.style.background =bottom_left_c.highlight_color
-    setTimeout(()=>{
-      game_st.control_player=true
-      b_l.style.background =bottom_left_c.Initial_color
-
-      console.log(game_st)
-    
-      if (game_st.Color_order.length==game_st.Color_order_player.length)
-      { 
-        console.log (check_result())
-       if( check_result())
-        { 
-         if (game_st.Color_order.length==1)
-         {
-          pidback.innerHTML='הדסה  ברעוז'
-          round_two()
-          .then(()=>{
-           game_st.control_player=true
-          }
-          )
-       
-         }
-        else if(game_st.Color_order.length<6)
-        {
-          pidback.innerHTML='הדסה אלופה'
-        round_three() 
+      element.style.background =side_c.highlight_color
+      
+      setTimeout(()=>{
+       game_st.control_player=true
+       element.style.background =side_c.Initial_color
+       console.log(game_st)
+       if (game_st.Color_order.length==game_st.Color_order_player.length)
+       { 
+         console.log (check_result())
+         if( check_result())
+         { 
+            if (game_st.Color_order.length==1)
+            {
+              feedback.innerHTML='הדסה  ברעוז'
+            round_two()
+           .then(()=>{
+            game_st.control_player=true
+             })
+            }
+            else if(game_st.Color_order.length==2)
+             {
+              feedback.innerHTML='הדסה אלופה'
+             round_three() 
+             }
+         else feedback.innerHTML='הדסה ענקיתתת'
         }
-        else  pidback.innerHTML='הדסה ענקיתתת'
-        }
-        else
-        pidback.innerHTML='נכשלת '
+       else
+       feedback.innerHTML='נכשלת '
+      } },500)  
     }
-    },500)
-    }
-  })
- 
-  
-  b_r.addEventListener('click',()=>{ 
+  }
+  function control_player()
+  {
     if (game_st.control_player&& game_st.Color_order.length>game_st.Color_order_player.length)
-    {
-      b_r.style.background =bottom_right_c.highlight_color
-      game_st.Color_order_player.push(bottom_right_c.value)
-      game_st.control_player=false
-    setTimeout(()=>{
-      game_st.control_player=true
-      b_r.style.background =bottom_right_c.Initial_color
-      console.log(game_st)
-      if (game_st.Color_order.length==game_st.Color_order_player.length)
-      { 
-        console.log (check_result())
-       if( check_result())
-        { 
-         if (game_st.Color_order.length==1)
-         {
-          pidback.innerHTML='הדסה  ברעוז'
-         round_two()
-         .then(()=>{
-          game_st.control_player=true
-         }
-         ) 
-         
-         }
-        else if(game_st.Color_order.length<6)
-        {
-          pidback.innerHTML='הדסה אלופה'
-       
-        round_three() 
-        }
-        else  pidback.innerHTML='הדסה ענקיתתת'
-        }
-        else
-        pidback.innerHTML='נכשלת '
-    }
-    },500)
-    }
-  })
+    return true
+  } 
 function init_status(){
  game_st.Color_order.length=0
  game_st.Color_order_player.length=0
  game_st.control_player=false
-}
-     
-   
-    
+} 
     function check_result(){
       for(let i=0;i<game_st.Color_order.length;i++)
       {
@@ -239,7 +128,7 @@ function init_status(){
     
        function round_two(){
         return new Promise((resolve, reject) => {
-          game_st.control_player=false
+          init_status()
           toggleColor(top_left_c,t_l)
           .then(()=>{
             game_st.Color_order.push(top_left_c.value)
@@ -249,10 +138,8 @@ function init_status(){
               game_st.Color_order.push(bottom_right_c.value)
               resolve(game_st)
           })
-          })
-         
+          })  
         })
-  
       }
       function round_three(){
         game_st.control_player=false
@@ -263,9 +150,7 @@ function init_status(){
           game_st.Color_order.push(bottom_left_c.value)
           game_st.control_player=true
         })
-    
-        })
-       
+        }) 
       }
 
      
