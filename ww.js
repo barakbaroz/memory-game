@@ -43,7 +43,8 @@ let game_st= {
              b.style.background =a.highlight_color
             },1000 ) 
             setTimeout(()=>{
-             b.style.background=a.Initial_color   
+             b.style.background=a.Initial_color  
+             game_st.Color_order.push(a.value) 
           resolve(game_st)
            },1700 )   
           })
@@ -116,41 +117,41 @@ function init_status(){
       return true 
     }
       start.addEventListener('click', () => {
-       
-        toggleColor(top_left_c,t_l)
-       .then((game_st)=>{
-        init_status()
+        round_one()
+       .then(()=>{
          game_st.control_player=true
-         game_st.Color_order.push(top_left_c.value)
          console.log(game_st)
         })
        })
-    
+
+       function round_one(){
+        return new Promise((resolve, reject) => {
+        init_status()
+        toggleColor(top_left_c,t_l)
+        .then(()=>
+        resolve())
+        })
+       }
+
        function round_two(){
         return new Promise((resolve, reject) => {
-          init_status()
-          toggleColor(top_left_c,t_l)
-          .then(()=>{
-            game_st.Color_order.push(top_left_c.value)
-      
+          round_one()
+          .then(()=>
             toggleColor(bottom_right_c,b_r)
+          )
             .then(()=>{
-              game_st.Color_order.push(bottom_right_c.value)
-              resolve(game_st)
-          })
-          })  
+              resolve()
+          })     
         })
       }
       function round_three(){
         game_st.control_player=false
         round_two()
-        .then(()=>{
-          toggleColor(bottom_left_c,b_l) 
-        .then(()=>{
-          game_st.Color_order.push(bottom_left_c.value)
+        .then(()=>
+          toggleColor(bottom_left_c,b_l) )
+        .then(()=>
           game_st.control_player=true
-        })
-        }) 
+        )
       }
 
      
